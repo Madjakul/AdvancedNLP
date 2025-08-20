@@ -17,13 +17,36 @@ marp: true
 ---
 <!--footer: 'Course 1: Introduction & Recap' -->
 
+### Human Language
+<br/>
+
+<center>
+<img width="900px" src="../imgs/course1/cartoon-intro.jpeg"/>
+</center>
+
+---
+
+### Human Language
+<br/>
+
+<center>
+<img width="900px" src="../imgs/course1/bnf.jpeg"/>
+</center>
+
+---
+### What is NLP?
+
+<center><img width="1000px" src="../imgs/course1/wooclap.png"/></center>
+
+---
+
 ### NLP in recent years
 
 <center><img width="1000px" src="../imgs/course1/nlp_timeline.png"/></center>
 
 ---
 
-### NLP in 2024
+### NLP in 2025
 <br/>
 
 <center>
@@ -32,7 +55,7 @@ marp: true
 
 ---
 
-### NLP in 2024
+### NLP in 2025
 
 <center>
 <img width="900px" src="../imgs/course1/copilot.png"/>
@@ -40,7 +63,7 @@ marp: true
 
 ---
 
-### NLP in 2024
+### NLP in 2025
 > *A picture of the computer science school EPITA, with the school logo on a banner.*
 
 <center>
@@ -49,7 +72,7 @@ marp: true
 
 ---
 
-### NLP in 2024
+### NLP in 2025
 <center>
 <img width="900px" src="../imgs/course1/google.png"/>
 </center>
@@ -57,7 +80,7 @@ marp: true
 
 ---
 
-### NLP in 2024
+### NLP in 2025
 
 <center>
 <img width="850px" src="../imgs/course1/knowgraph_hp.png"/>
@@ -107,18 +130,18 @@ marp: true
 <div style="display: flex;">
     <div style="flex: 33%;">
         <center>
-        <img width="200px" src="../imgs/course1/matthieu.jpeg"/></br>
-        Matthieu <br/>Futeral-Peter <small>(mail:futeral)</small></center>
-    </div>
-    <div style="flex: 33%;">
-        <center>
-        <img width="200px" src="../imgs/course1/nathan.jpeg"/></br>
-        Nathan <br/>Godey</center>
+        <img width="200px" src="../imgs/course1/celia.jpeg"/></br>
+        Célia <br/> Nouri </center>
     </div>
     <div style="flex: 33%;">
         <center>
         <img width="200px" src="../imgs/course1/francis.jpeg"/></br>
-        Francis <br/>Kulumba</center>
+        Francis <br/>Kulumba ></center>
+    </div>
+    <div style="flex: 33%;">
+        <center>
+        <img width="200px" src="../imgs/course1/francis.jpeg"/></br>
+        Rian <br/>Touchent</center>
     </div>
 </div>
 
@@ -126,7 +149,13 @@ marp: true
 
 ---
 ### Course organization
+* Objectives 
+    * ***Knowlegde :*** Understand how the main components of modern NLP pipelines work.
+    * ***Hands-on Practice :*** Develop the ability to build NLP systems for most major NLP tasks (classification, question-answering, ChatGPT-like assistant...).
+    * ***Critical Thinking :*** Understand the flaws and challenges of NLP, and come up with creative ideas to improve current systems.
 
+---
+### Course organization
 * Part 1
     * ***When :*** 4 days (30/11, 07/12, 14/12, 21/12)
     * ***Subject :*** General NLP
