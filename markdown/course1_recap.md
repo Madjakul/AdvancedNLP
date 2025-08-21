@@ -21,7 +21,7 @@ marp: true
 <br/>
 
 <center>
-<img width="900px" src="../imgs/course1/cartoon-intro.jpeg"/>
+<img width="900px" src="../imgs/course1/intro-cartoon.jpeg"/>
 </center>
 
 ---
@@ -135,12 +135,12 @@ marp: true
     </div>
     <div style="flex: 33%;">
         <center>
-        <img width="200px" src="../imgs/course1/francis.jpeg"/></br>
+        <img width="200px" src="../imgs/course1/francis.png"/></br>
         Francis <br/>Kulumba ></center>
     </div>
     <div style="flex: 33%;">
         <center>
-        <img width="200px" src="../imgs/course1/francis.jpeg"/></br>
+        <img width="200px" src="../imgs/course1/rian.jpg"/></br>
         Rian <br/>Touchent</center>
     </div>
 </div>
