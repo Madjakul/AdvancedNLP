@@ -2,33 +2,32 @@
 
 ![Banner](static/github_anlp_banner.png)
 
-## Program 
-**Objectives** 
+## Objectives
 1. Knowlegde: Understand how the main components of modern NLP pipelines work.
 2. Hands-on Practice: Develop the ability to build NLP systems for most major NLP tasks (classification, question-answering, ChatGPT-like assistant...).
 3. Critical Thinking: Understand the flaws and challenges of NLP, and come up with creative ideas to improve current systems.
 
-**Course organization**
+## Course organization
+
 Part 1: General NLP 
+
 * **Session 1 (3/10, Célia)**: Recap
 * **Session 2 (17/10, Francis)**: Tokenization
 * **Session 3 (24/10, Francis)**: Language Modeling
 * **Session 4 (31/10, Francis)**: Modern NLP with limited resources
 * **Session 5 (7/11, Francis)**: Modern Interpretability 
-
 * **Session 6 (14/11, Francis/Célia)**: Midterm project session
 
-
 Part 2: Advanced NLP Applications
+
 * **Session 7 (21/11, Célia)**: Human-Centered NLP
 * **Session 8 (28/11, Rian)**: Advanced NLP Tasks
 * **Session 9 (5/12, Rian)**: Domain-specific NLP
 * **Session 10 (12/12, Rian)**: Multilingual NLP 
 * **Session 11 (19/12, Célia)**: Multimodal NLP
-
 * **Session 12 (16/01, Francis/Célia/Rian)**: Final Presentations!
 
-## Session Materials
+## Materials
 
 1. Recap on Deep Learning & basic NLP ([slides](https://github.com/Madjakul/AdvancedNLP/blob/main/slides/pdf/course1_recap.pdf) / [lab session](https://colab.research.google.com/drive/1_QzQBdP289benS8Uo3yPQmtXoM-f80-n?usp=sharing))
 2. Tokenization ([slides](https://github.com/NathanGodey/AdvancedNLP/raw/main/slides/pdf/course2_tokenization.pdf) / [lab session]())
