@@ -169,7 +169,7 @@ marp: true
 
 ---
 ### Course organization
-* Part 1 (Francis): General NLP (17/10, 24/10, 31/10, 7/11)
+Part 1: General NLP 
 * ***What :*** Tokenization, Language Modeling, Small Models, Interpretability
 * ***Goal :*** Understand, build and deploy a custom ChatGPT-like assistant.
 
@@ -185,7 +185,7 @@ marp: true
 
 ---
 ### Course organization
-* Part 2 (Rian/Célia): Advanced NLP Applications (21/11, 28/11, 5/12, 12/12, 19/12)
+Part 2: Advanced NLP Applications 
 * ***What :*** Human-Centered, Tasks and Applications, Multilinguality, Multimodality
 * ***Goal :*** Understand, build and deploy NLP systems across languages, media, and real-world contexts.
 ---
