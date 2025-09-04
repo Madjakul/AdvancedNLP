@@ -21,7 +21,7 @@ marp: true
 <br/>
 
 <center>
-<img width="900px" src="../imgs/course1/intro-cartoon.png"/>
+<img height="400px" src="../imgs/course1/intro-cartoon.png"/>
 </center>
 
 ---
@@ -156,12 +156,41 @@ marp: true
 
 ---
 ### Course organization
-* Part 1
-    * ***When :*** 4 days (30/11, 07/12, 14/12, 21/12)
+* Part 1 (Francis): General NLP 
+    * ***When :*** Every Friday (except 10/10) from 2 to 6pm 
     * ***Subject :*** General NLP
     * ***Goal :*** Know how to build and deploy a custom ChatGPT-like assistant.
 
 ---
+### Course organization
+* Part 1 (Francis): General NLP (17/10, 24/10, 31/10, 7/11)
+* ***What :*** Tokenization, Language Modeling, Small Models, Interpretability
+* ***Goal :*** Understand, build and deploy a custom ChatGPT-like assistant.
+* Part 2 (Rian/Célia): Advanced NLP Applications (21/11, 28/11, 5/12, 12/12, 19/12)
+* ***What :*** Human-Centered, Tasks and Applications, Multilinguality, Multimodality
+* ***Goal :*** Understand, build and deploy NLP systems across languages, media, and real-world contexts.
+---
+### Program
+* **Session 1 (Today, Célia)**: Recap
+* **Session 2 (17/10, Francis)**: Tokenization
+* **Session 3 (24/10, Francis)**: Language Modeling
+* **Session 4 (31/10, Francis)**: Modern NLP with limited resources
+* **Session 5 (7/11, Francis)**: Modern Interpretability 
+
+* **Session 6 (14/11, Francis/Célia)**: Midterm project session
+
+---
+### Program
+* **Session 7 (21/11, Célia)**: Human-Centered NLP
+* **Session 8 (28/11, Rian)**: Advanced NLP Tasks
+* **Session 9 (5/12, Rian)**: Domain-specific NLP
+* **Session 10 (12/12, Rian)**: Multilingual NLP 
+* **Session 11 (19/12, Célia)**: Multimodal NLP
+
+* **Session 12 (16/01, Francis/Célia/Rian)**: Final Presentations!
+
+---
+
 ### Evaluation
 * Group project (4-5 people)
 * Two options
@@ -185,30 +214,23 @@ Based on a research article, conduct original experiments and produce a report.
 
 ---
 ### Evaluation
-* Mid-term project evaluation (30%)
+* Mid-term project evaluation (14/11, 30%)
     * Project proposal
     * First elements
-    * ~January
-* Final project (70%)
-    * Short report showing each person's contribution
+* Final project (16/01, 70%)
+    * Short report showing each person's contribution (send it by 9/01)
     * Github repo
+    * Oral group presentations
 
 ---
 ### Evaluation
 * You can already constitute teams
-* Send an email with:
+* Send an email (to {celia.nouri, francis.kulumba, rian.touchent}@inria.fr) with:
     * Names of team members
     * cc to everyone in the team
     * *Demo* or *R&D*
     * One-sentence description of project
 * If you really have no idea what to do, <ins>ask me</ins>
-
----
-### Program
-* **Session 1 (Today)**: Recap
-* **Session 2 (7/12)**: Tokenization
-* **Session 3 (14/12)**: Language Modeling
-* **Session 4 (21/12)**: Modern NLP with limited resources
 
 ---
 <!--_class: lead -->
