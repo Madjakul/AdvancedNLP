@@ -21,16 +21,29 @@ marp: true
 <br/>
 
 <center>
-<img height="400px" src="../imgs/course1/intro-cartoon.png"/>
+<img height="500px" src="../imgs/course1/intro-cartoon.png"/>
 </center>
 
 ---
 
-### Human Language
+### Data
 <br/>
 
 <center>
 <img width="900px" src="../imgs/course1/bnf.jpg"/>
+</center>
+
+---
+### Datasources for NLP
+
+<center><img width="1000px" src="../imgs/course1/wooclap.png"/></center>
+
+---
+### But also ..
+<br/>
+
+<center>
+<img width="900px" src="../imgs/course1/datasources_nlp.png"/>
 </center>
 
 ---
@@ -156,19 +169,10 @@ marp: true
 
 ---
 ### Course organization
-* Part 1 (Francis): General NLP 
-    * ***When :*** Every Friday (except 10/10) from 2 to 6pm 
-    * ***Subject :*** General NLP
-    * ***Goal :*** Know how to build and deploy a custom ChatGPT-like assistant.
-
----
-### Course organization
 * Part 1 (Francis): General NLP (17/10, 24/10, 31/10, 7/11)
 * ***What :*** Tokenization, Language Modeling, Small Models, Interpretability
 * ***Goal :*** Understand, build and deploy a custom ChatGPT-like assistant.
-* Part 2 (Rian/Célia): Advanced NLP Applications (21/11, 28/11, 5/12, 12/12, 19/12)
-* ***What :*** Human-Centered, Tasks and Applications, Multilinguality, Multimodality
-* ***Goal :*** Understand, build and deploy NLP systems across languages, media, and real-world contexts.
+
 ---
 ### Program
 * **Session 1 (Today, Célia)**: Recap
@@ -179,6 +183,11 @@ marp: true
 
 * **Session 6 (14/11, Francis/Célia)**: Midterm project session
 
+---
+### Course organization
+* Part 2 (Rian/Célia): Advanced NLP Applications (21/11, 28/11, 5/12, 12/12, 19/12)
+* ***What :*** Human-Centered, Tasks and Applications, Multilinguality, Multimodality
+* ***Goal :*** Understand, build and deploy NLP systems across languages, media, and real-world contexts.
 ---
 ### Program
 * **Session 7 (21/11, Célia)**: Human-Centered NLP
@@ -218,19 +227,19 @@ Based on a research article, conduct original experiments and produce a report.
     * Project proposal
     * First elements
 * Final project (16/01, 70%)
-    * Short report showing each person's contribution (send it by 9/01)
+    * Short report showing each person's contribution (by 9/01)
     * Github repo
     * Oral group presentations
 
 ---
 ### Evaluation
 * You can already constitute teams
-* Send an email (to {celia.nouri, francis.kulumba, rian.touchent}@inria.fr) with:
-    * Names of team members
-    * cc to everyone in the team
+* Send an email:
+    * To {celia.nouri, francis.kulumba, rian.touchent}@inria.fr
+    * With the names of team members
     * *Demo* or *R&D*
-    * One-sentence description of project
-* If you really have no idea what to do, <ins>ask me</ins>
+    * Small description of project (few sentences)
+* If you really have no idea what to do, <ins>ask us</ins>
 
 ---
 <!--_class: lead -->
