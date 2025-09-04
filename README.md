@@ -2,14 +2,40 @@
 
 ![Banner](static/github_anlp_banner.png)
 
-## Sessions
+## Program 
+**Objectives** 
+1. Knowlegde: Understand how the main components of modern NLP pipelines work.
+2. Hands-on Practice: Develop the ability to build NLP systems for most major NLP tasks (classification, question-answering, ChatGPT-like assistant...).
+3. Critical Thinking: Understand the flaws and challenges of NLP, and come up with creative ideas to improve current systems.
 
-1. Recap on Deep Learning & basic NLP ([slides](https://github.com/NathanGodey/AdvancedNLP/raw/main/slides/pdf/course1_recap.pdf) / [lab session]())
+**Course organization**
+* Part 1 (Francis, Célia): General NLP (3/10, 17/10, 24/10, 31/10, 7/11)
+* **Session 1 (3/10, Célia)**: Recap
+* **Session 2 (17/10, Francis)**: Tokenization
+* **Session 3 (24/10, Francis)**: Language Modeling
+* **Session 4 (31/10, Francis)**: Modern NLP with limited resources
+* **Session 5 (7/11, Francis)**: Modern Interpretability 
+
+* **Session 6 (14/11, Francis/Célia)**: Midterm project session
+
+
+* Part 2 (Rian/Célia): Advanced NLP Applications (21/11, 28/11, 5/12, 12/12, 19/12)
+* **Session 7 (21/11, Célia)**: Human-Centered NLP
+* **Session 8 (28/11, Rian)**: Advanced NLP Tasks
+* **Session 9 (5/12, Rian)**: Domain-specific NLP
+* **Session 10 (12/12, Rian)**: Multilingual NLP 
+* **Session 11 (19/12, Célia)**: Multimodal NLP
+
+* **Session 12 (16/01, Francis/Célia/Rian)**: Final Presentations!
+
+## Session Materials
+
+1. Recap on Deep Learning & basic NLP ([slides](https://github.com/Madjakul/AdvancedNLP/blob/main/slides/pdf/course1_recap.pdf) / [lab session](https://colab.research.google.com/drive/1_QzQBdP289benS8Uo3yPQmtXoM-f80-n?usp=sharing))
 2. Tokenization ([slides](https://github.com/NathanGodey/AdvancedNLP/raw/main/slides/pdf/course2_tokenization.pdf) / [lab session]())
 3. Language Modeling ([slides](https://github.com/NathanGodey/AdvancedNLP/raw/main/slides/pdf/course3_lm.pdf) / [lab session]())
 4. NLP without 2048 GPUs ([slides](https://github.com/NathanGodey/AdvancedNLP/raw/main/slides/pdf/course4_efficiency.pdf) / [lab session]())
 5. Modern Interpretability ([slides]() / [lab session]())
-6. Handling the Risks of Language Models ([slides]() / [lab session]())
+6. Human-Centered NLP ([slides]() / [lab session]())
 7. Advanced NLP tasks ([slides](https://github.com/NathanGodey/AdvancedNLP/raw/main/slides/pdf/course7_advanced.pdf) / [lab session]())
 8. Domain-specific NLP ([slides](https://github.com/NathanGodey/AdvancedNLP/raw/main/slides/pdf/course8_specific.pdf) / [lab session]())
 9. Multilingual NLP ([slides](https://github.com/NathanGodey/AdvancedNLP/blob/main/slides/pdf/Course%209%20-%20Multilingual%20NLP.pdf) / [lab session]())
@@ -26,11 +52,11 @@ The evaluation consists in a team project (3-5 people). The choice of the subjec
 
 :alarm_clock: The project follows 3 deadlines:
 
-- **Project announcement (before 2025/10/24)**: send an email to `francis.kulumba@inria.fr` with cc's `celia.nouri@inria.fr` and `rian.touchent@inria.fr` explaining
+- **Project announcement (before 2025/10/17)**: send an email to `francis.kulumba@inria.fr` with cc's `celia.nouri@inria.fr` and `rian.touchent@inria.fr` explaining
   - The team members (also cc'ed)
-  - A vague description of the project (it can change later on)
+  - A small description of the project (it can change later on)
 - **Project proposal (25% of final grade, before 2025/11/14)**: following [this template](https://docs.google.com/document/d/1JxkbE73ti4vjbIFcBfQpTOT0RfxTInotKyFf4Rglzi8/edit?usp=sharing), produce a project proposal explaining first attempts (e.g. version alpha), how they failed/succeeded and what you want to do before the delivery.
-- **Project delivery (75% of final grade, 2025/12/12)**: delivery of a GitHub repo with an explanatory README + oral presentation on **December XXth**
+- **Project delivery (75% of final grade, 2026/01/09)**: delivery of a short report detailing each person's contributions, a GitHub repo with an explanatory README + oral presentation on **January 16th**
 
 ## Inspiring articles
 
