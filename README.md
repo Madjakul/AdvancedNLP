@@ -54,7 +54,7 @@ The evaluation consists in a team project (3-5 people). The choice of the subjec
 - **Project announcement (before 2025/10/17)**: send an email to `francis.kulumba@inria.fr` with cc's `celia.nouri@inria.fr` and `rian.touchent@inria.fr` explaining
   - The team members (also cc'ed)
   - A small description of the project (it can change later on)
-- **Project proposal (25% of final grade, before 2025/11/14)**: following [this template](https://docs.google.com/document/d/1JxkbE73ti4vjbIFcBfQpTOT0RfxTInotKyFf4Rglzi8/edit?usp=sharing), produce a project proposal explaining first attempts (e.g. version alpha), how they failed/succeeded and what you want to do before the delivery.
+- **Project proposal (25% of final grade, before 2025/11/21)**: following [this template](https://docs.google.com/document/d/1JxkbE73ti4vjbIFcBfQpTOT0RfxTInotKyFf4Rglzi8/edit?usp=sharing), produce a project proposal explaining first attempts (e.g. version alpha), how they failed/succeeded and what you want to do before the delivery.
 - **Project delivery (75% of final grade, 2026/01/09)**: delivery of a short report detailing each person's contributions, a GitHub repo with an explanatory README + oral presentation on **January 16th**
 
 ## Inspiring articles
