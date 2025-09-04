@@ -43,7 +43,7 @@ marp: true
 <br/>
 
 <center>
-<img width="900px" src="../imgs/course1/datasources_nlp.png"/>
+<img height="450px" src="../imgs/course1/datasources_nlp.png"/>
 </center>
 
 ---
@@ -223,20 +223,21 @@ Based on a research article, conduct original experiments and produce a report.
 
 ---
 ### Evaluation
-* Mid-term project evaluation (14/11, 30%)
+* Mid-term project evaluation (14/11, 25%)
     * Project proposal
     * First elements
-* Final project (16/01, 70%)
+* Final project (16/01, 75%)
     * Short report showing each person's contribution (by 9/01)
-    * Github repo
+    * Github repo (by 9/01)
     * Oral group presentations
 
 ---
 ### Evaluation
 * You can already constitute teams
 * Send an email:
+    * By 17/10
     * To {celia.nouri, francis.kulumba, rian.touchent}@inria.fr
-    * With the names of team members
+    * With the names of team members (also cc'ed)
     * *Demo* or *R&D*
     * Small description of project (few sentences)
 * If you really have no idea what to do, <ins>ask us</ins>
