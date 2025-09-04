@@ -9,7 +9,7 @@
 3. Critical Thinking: Understand the flaws and challenges of NLP, and come up with creative ideas to improve current systems.
 
 **Course organization**
-* Part 1 (Francis, Célia): General NLP (3/10, 17/10, 24/10, 31/10, 7/11)
+Part 1: General NLP 
 * **Session 1 (3/10, Célia)**: Recap
 * **Session 2 (17/10, Francis)**: Tokenization
 * **Session 3 (24/10, Francis)**: Language Modeling
@@ -19,7 +19,7 @@
 * **Session 6 (14/11, Francis/Célia)**: Midterm project session
 
 
-* Part 2 (Rian/Célia): Advanced NLP Applications (21/11, 28/11, 5/12, 12/12, 19/12)
+Part 2: Advanced NLP Applications
 * **Session 7 (21/11, Célia)**: Human-Centered NLP
 * **Session 8 (28/11, Rian)**: Advanced NLP Tasks
 * **Session 9 (5/12, Rian)**: Domain-specific NLP
