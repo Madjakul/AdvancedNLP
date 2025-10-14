@@ -318,98 +318,214 @@ $$
 
 ---
 
-### Unigram
+### The Unigram Philosophy
 
-Unigram is working in the opposite direction:
-* Start from a (too) big subword vocabulary
-* Gradually eliminate tokens <mark>that won't be missed</mark> :wave:
-* **Score** all possible segmentations and take max:
-    * Ex: *brew*
-        * S(*b*/*r*/*e*/*w*) &rarr; P(*b*) x P(*r*) x P(*e*) x P(*w*) = 0.024
-        * S(*br*/*e*/*w*) &rarr; P(*br*) x P(*e*) x P(*w*) = 0.031
-        ...
+<span class="success">Don't commit to one segmentation: model the uncertainty!</span>
 
----
+**Core Idea:** Treat segmentation as a <span class="highlight">probability distribution</span>
 
-### Unigram - Inference
-
-:warning: A string of length $n$ has $O(2^n)$ possible segmentations :warning:
-
-&rarr; Unigram is using the <mark>Viterbi</mark> algorithm:
-* Observation: 
-    * for all $i$ and $j$ indexes:
-        * if the optimal segmentation $S^*(w_{:i})$ is known...
-        * ... then all segmentations of type $S(w_{:i}) + w_{i:j}$ where $S(w_{:i}) \neq S^*(w_{:i})$ are <mark>suboptimal</mark>
+- Each token has a **learned probability**
+- Each segmentation has probability = product of its token probabilities
+- Text probability = <span class="emphasis">sum over all possible segmentations</span>
 
 ---
 
-### Unigram - Inference
+### Historical Context
 
-Example: *email*
+$P(x_1, x_2, ..., x_n) = P(x_1) \times P(x_2) \times ... \times P(x_n)$
 
-* Starting from letter *e*
-    * For all <ins>ending letters</ins>, what is the best segmentation if last token starts from *e*?
-        * S(*e*) = 0.15
-        * S(*em*) = 0.02
-        ...
-        * S(*email*) = 0.001
+$P(\text{text}) = \sum_{\text{segmentations}} P(\text{segmentation})$
 
----
-### Unigram - Inference
+**Key Advantage:** Unigram explicitly models ambiguity during training
 
-Example: *email*
-
-* Starting from letter *m*
-    * For all <ins>ending letters</ins>, what is the best segmentation if last token starts from *m*?
-        * S(*e* /*m*) = 0.1
-        ...
-        * S(*e* /*mail*) = 0.2
-* Remark: we've seen S(*em*) and S(*e* /*m*) &rarr; we know the best segmentation that ends at *m* !
+=> More <span class="success">robust</span> to novel words and rare combinations
 
 ---
-### Unigram - Inference
 
-Example: *email*
+### Training Unigram: High-Level Overview
+<style scoped>section{font-size:31px;}</style>
 
-* Starting from letter *a*
-    * For all <ins>ending letters</ins>, what is the best segmentation if last token starts from *a*? **(hence after *e* /*m*)**
-        * S(*e* /*m* /*a*) = 0.023
-        ...
-        * S(*e* /*m* /*ail*) = $\infty$ (*ail* is not in vocab)
-* Remark: we've seen S(*ema*), ..., S(*e* /*m*/ *a*) &rarr; we know the best segmentation that ends at *a* ! (here: *e* /*ma* is best)
+**Step 1:** Initialize large vocabulary (all substrings up to a given length)
 
----
-### Unigram - Inference
+**Step 2:** Set uniform probabilities: $P(\text{token}) = 1/|V|$
 
-Example: *email*
+**Step 3:** Expectation-maximization (EM) algorithm (iterate until convergence)
+- **E-step:** Sample segmentations, count tokens
+- **M-step:** Update $P(\text{token}) \propto \text{count}(\text{token})$
 
-* Starting from letter *i*
-    * For all <ins>ending letters</ins>, what is the best segmentation if last token starts from *i* ? (hence after *e* /*ma*)
-        * S(*e* /*ma* /*i* ) = 0.004
-        * S(*e* /*ma* / *il* ) = 0.03
-* Remark: we only have 2 candidates left! (here: *ema* /*i* is best)
+**Step 4:** Prune low-probability tokens
+
+**Step 5:** Repeat steps 3-4 until vocabulary reaches target size
 
 ---
-### Unigram - Inference
 
-Example: *email*
+### Training Example: Setup
+<style scoped>section{font-size:31px;}</style>
 
-* Starting from letter *l*
-    * For all <ins>ending letters</ins>, what is the best segmentation if last token starts from *l* ? (hence after *ema* /*i*)
-        * S(*ema* /*i* /*l* ) = 0.002
+**Training Corpus (3 documents):**
+```
+Doc 1: "hello␣world"
+Doc 2: "hello␣there"
+Doc 3: "goodbye␣world"
+```
 
-Takeaway: At each *start* position, we know what the best segmentation up to *start* is => we just need to explore after *start*
+**Initial Vocabulary (25 tokens):**
+- **Characters:** h, e, l, o, w, r, d, t, g, b, y, ␣
+- **Bigrams:** he, el, ll, lo, or, ld, th, er, re
+- **Words:** hello, world, there, goodbye
+
+**Initialize:** $P(\text{token}) = 1/25 = 0.04$ for all tokens
 
 ---
-### Unigram - Training (&#x2248;)
 
-* Start from a very big vocabulary
-* Infer on all pre-tokenized units $w \in W$ and get total score as:
+### Forward Filtering: Computing Probability Mass
+<style scoped>section{font-size:30px;}</style>
+
+**Goal:** Compute $P(\text{text})$ = sum over all possible segmentations
+
+**Problem:** Exponentially many segmentations: $\mathcal{O}(2^n)$ for a string of length $n$.
+
+**Solution: Dynamic Programming**
+
+**Key Idea:** Compute $\alpha[t]$ = total probability of reaching position $t$
+
+$$\alpha[0] = 1.0 \quad \text{(base case)}$$
+
+$$\alpha[t] = \sum_{s < t} \alpha[s] \times P(\text{token from } s \text{ to } t)$$
+
+At the end: $\alpha[n] = P(\text{text})$,  the total probability mass.
 
 ---
-### Unigram - Training (&#x2248;)
 
-- Start from a very big vocabulary
+### Forward Filtering: "hello␣world" (abbreviated)
+<style scoped>section{font-size:26px;}</style>
+
+```
+Position 0: α[0] = 1.0
+```
+
+```
+Position 1 (after "h"):
+  - Token "h": α[0] × P("h") = 1.0 × 0.04 = 0.04
+  -> α[1] = 0.04
+```
+
+```
+Position 2 (after "he"):
+  - Token "e": α[1] × 0.04 = 0.0016
+  - Token "he": α[0] × 0.04 = 0.04
+  -> α[2] = 0.0016 + 0.04 = 0.0416
+```
+
+```
+Position 5 (after "hello"):
+  - Token "hello": α[0] × 0.04 = 0.04
+  - Other paths: ~0.0002
+  -> α[5] ≈ 0.0402
+```
+
+**Key insight:** "hello" as single token dominates the probability mass!
+
+---
+
+### Backward Sampling: Drawing Segmentations
+<style scoped>section{font-size:28px;}</style>
+
+**Goal:** Sample segmentations proportionally to their probability
+
+**Algorithm:**
+1. Start at the end of the text
+2. For each token that could end here, compute conditional probability:
+   $$P(\text{token} | \text{at position } t) = \frac{\alpha[s] \times P(\text{token})}{\alpha[t]}$$
+3. Sample randomly according to these probabilities
+4. Move backward to the start of the chosen token
+5. Repeat until reaching position 0
+
+This whole loop is called **forward filtering backward sampling (FFBS)**.
+
+---
+
+### Sampling "hello␣world": Three Samples
+
+**Sample 1:** `["hello", "␣", "world"]`
+
+**Sample 2:** `["he", "ll", "o", "␣", "w", "or", "ld"]`
+
+**Sample 3:** `["hello", "␣", "w", "or", "ld"]`
+
+<span class="highlight">We sample multiple times per document</span> to get diverse training signal.
+
+Then we <span class="success">count</span> how often each token appeared across all samples.
+
+---
+
+### E-Step: Accumulating Token Counts
+<style scoped>section{font-size:26px;}</style>
+
+After sampling all documents multiple times, we count token occurrences:
+<center>
+
+| Token | Count |
+|-------|-------|
+| "hello" | 8 times |
+| "goodbye" | 4 times |
+| "world" | 3 times |
+| "there" | 2 times |
+| "␣" | 18 times |
+| "l" | 7 times |
+| "o" | 6 times |
+| ... others ... | 52 times |
+| **Total** | **100 times** |
+</center>
+
+---
+
+### M-Step: Updating Probabilities
+
+**Maximum Likelihood Estimation:** $P(\text{token}) \propto \text{count}(\text{token})$
+
+<center>
+
+| Token | Count | Old P | New P |
+|-------|-------|-------|-------|
+| "␣" | 18 | 0.04 | **0.18** ↑ |
+| "hello" | 8 | 0.04 | **0.08** ↑ |
+| "goodbye" | 4 | 0.04 | 0.04 |
+| "world" | 3 | 0.04 | 0.03 |
+| "h" | 1 | 0.04 | **0.01** ↓ |
+</center>
+
+---
+
+## EM Iterations: Convergence
+<style scoped>section{font-size:28px;}</style>
+
+After iteration 1, probabilities shift toward useful tokens.
+In iteration 2, these tokens get sampled <span class="emphasis">more frequently</span>.
+
+**After 10 iterations (convergence):**
+
+<center>
+
+| Token | Probability | Note |
+|-------|-------------|------|
+| "␣" | 0.25 | ↑ Essential separator |
+| "hello" | 0.15 | ↑ Common word |
+| "goodbye" | 0.12 | ↑ Common word |
+| "world" | 0.10 | ↑ Common word |
+| "ll" | 0.06 | Useful bigram |
+| "h" | 0.01 | ↓ Rarely needed |
+</center>
+
+---
+
+### Vocabulary Pruning
+<style scoped>section{font-size:28px;}</style>
+
+**Problem:** Initial vocabulary is huge (100K+ tokens)
+**Goal:** Reduce to manageable size (8K-32K tokens)
+
+- Start from a very big vocabulary $V$.
 - Infer on all pre-tokenized units $w \in W$ and get total score as:
 $$
 score(V, W) = \sum_{w=(t_1...t_n) \in W} -\log(P_V(t_1)\times ... \times P_V(t_n))
@@ -418,7 +534,169 @@ $$
 * Get rid of the 20% tokens that **least decrease** the score when removed
 * Iterate :repeat: <small>(until you have desired vocabulary size)</small>
 
+:warning: **Always keep character-level tokens for coverage.**
+
 ---
+
+### Training vs. Inference: Different Algorithms
+
+<center>
+
+| **Training (Offline)** | **Inference (Online)** |
+|------------------------|------------------------|
+| Forward-Backward + Sampling | Viterbi Algorithm |
+| Sample **multiple** segmentations | Finds **single best** segmentation |
+| Explores diverse strategies | Uses max instead of sum |
+| **Stochastic** | **Deterministic** |
+| Builds robust vocabulary | Fast and predictable |
+</center>
+
+---
+
+### Viterbi Decoding: Finding the Best Path
+
+**Goal:** Find the highest-probability segmentation (not sum over all)
+
+**Algorithm:** Same as forward pass, but use **MAX** instead of **SUM**
+
+$$\beta[0] = 1.0 \quad \text{(base case)}$$
+
+$$\beta[t] = \max_{s < t} \{ \beta[s] \times P(\text{token from } s \text{ to } t) \}$$
+
+- Track which token gave the max at each position (**backpointer**)
+- At the end, follow backpointers to reconstruct the best path
+
+---
+### Viterbi Training: Step-by-Step for "email"
+<style scoped>section{font-size:24px;}</style>
+
+<center>
+
+| Token | Freq. in Corpus | Probability (Freq / 42) |
+| :---- | :-------------: | :---------------------: |
+| `e`   |        6        |          0.143          |
+| `m`   |        4        |          0.095          |
+| `a`   |        3        |          0.071          |
+| `i`   |        5        |          0.119          |
+| `l`   |        5        |          0.119          |
+| `em`  |        1        |          0.024          |
+| `ma`  |        3        |          0.071          |
+| `ai`  |        3        |          0.071          |
+| `il`  |        3        |          0.071          |
+| `mail`|        3        |          0.071          |
+| `email`|       1        |          0.024          |
+
+</center>
+
+---
+
+### Viterbi Training: Step-by-Step for "email"
+
+We'll build a table to track the best score and segmentation that ends at each character.
+
+**Position 1: `e`**
+* **Path**: `['e']`
+* **Score**: $P(e) = 0.143$
+* **Best Score ending at `e`**: **0.143**
+
+---
+### Viterbi Training: Step-by-Step for "email"
+<style scoped>section{font-size:28px;}</style>
+
+**Position 2: `m`** (String is "em")
+We check all possible ways the segmentation can end at `m`:
+1.  **Ending with token `m`**: The path is `['e', 'm']`.
+    * Score = (Best score for `e`) $\times$ $P(m)$
+    * Score = $0.143 \times 0.095 = 0.014$
+2.  **Ending with token `em`**: The path is `['em']`.
+    * Score = $P(em) = 0.024$
+
+**Decision**: $0.024 > 0.014$.
+* **Best Score ending at `m`**: **0.024**
+* **Best Path**: `['em']`
+
+---
+
+### Viterbi Training: Step-by-Step for "email"
+<style scoped>section{font-size:28px;}</style>
+
+**Position 3: `a`** (String is "ema")
+1.  **Ending with `a`**: Path `['em', 'a']`
+    * Score = (Best score for `em`) $\times$ $P(a)$
+    * Score = $0.024 \times 0.071 = 0.0017$
+2.  **Ending with `ma`**: Path `['e', 'ma']`
+    * Score = (Best score for `e`) $\times$ $P(ma)$
+    * Score = $0.143 \times 0.071 = 0.01$
+
+**Decision**: $0.01 > 0.0017$.
+* **Best Score ending at `a`**: **0.01**
+* **Best Path**: `['e', 'ma']`
+
+---
+
+### Viterbi Training: Step-by-Step for "email"
+<style scoped>section{font-size:28px;}</style>
+
+**Position 4: `i`** (String is "emai")
+1.  **Ending with `i`**: Path `['e', 'ma', 'i']`
+    * Score = (Best score for `ema`) $\times$ $P(i)$
+    * Score = $0.01 \times 0.119 = 0.00119$
+2.  **Ending with `ai`**: Path `['em', 'ai']`
+    * Score = (Best score for `em`) $\times$ $P(ai)$
+    * Score = $0.024 \times 0.071 = 0.0017$
+
+**Decision**: $0.0017 > 0.00119$.
+* **Best Score ending at `i`**: **0.0017**
+* **Best Path**: `['em', 'ai']`
+
+---
+
+### Viterbi Training: Step-by-Step for "email"
+<style scoped>section{font-size:26px;}</style>
+
+**Position 5: `l`** (String is "email") - Final Step!
+1.  **Ending with `l`**: Path `['em', 'ai', 'l']`
+    * Score = (Best for `emai`) $\times$ $P(l) = 0.0017 \times 0.119 = 0.0002$
+2.  **Ending with `il`**: Path `['e', 'ma', 'il']`
+    * Score = (Best for `ema`) $\times$ $P(il) = 0.01 \times 0.071 = 0.00071$
+3.  **Ending with `mail`**: Path `['e', 'mail']`
+    * Score = (Best for `e`) $\times$ $P(mail) = 0.143 \times 0.071 = 0.01$
+4.  **Ending with `email`**: Path `['email']`
+    * Score = $P(email) = 0.024$
+
+**Final Decision**: The highest score is **0.024**.
+* **Optimal Segmentation**: `['email']`
+
+---
+
+### Implementation Tricks in Practice
+
+**1. Log Space Computation**
+- Work with $\log P$ instead of $P$ to avoid numerical underflow
+- Multiply -> Sum -> LogSumExp trick
+
+**2. Forward-Backward Algorithm (SentencePiece)**
+- Compute exact expected counts without sampling
+- Forward pass: $\alpha[t]$ (prefix probabilities)
+- Backward pass: $\beta[t]$ (suffix probabilities)
+---
+
+### The Forward-Backward Trick
+<style scoped>section{font-size:32px;}</style>
+
+Instead of sampling, compute **exact expected counts**:
+
+For each token at each position $[s:t]$:
+
+$$\text{Expected count} = \frac{\alpha[s] \times P(\text{token}) \times \beta[t]}{P(\text{text})}$$
+
+Where:
+- $\alpha[s]$ = probability of all ways to reach position $s$
+- $\beta[t]$ = probability of all ways to segment from $t$ to end
+- $P(\text{text}) = \alpha[n]$ = total probability
+
+---
+
 <!--_class: lead -->
 # Limits & Alternatives
 
@@ -429,7 +707,6 @@ $$
     * ... leads to OOV (out-of-vocabulary)
     * ... scales poorly to 100+ languages (and scripts)
     * ... can cause over-segmentation
-    * ... is not robust to misspellings
 
 ```python
 bpe("artificial intelligence is real") => 'artificial', 'intelligence', 'is', 'real'
@@ -462,15 +739,7 @@ bpe("aritificial inteligense is reaal") =>
 => more robust and data efficient BUT ~10 times slower and more hardware consumption
 
 ---
-### Neural tokenization - CANINE <small> (Clark et al.) </small>
 
-- Downsamples characters into 4$\times$ smaller sequences
-<center><img width=800px src='../imgs/course2/canine.png'/></center>
-
-
-
-
----
 ### Neural tokenization - MANTa <small> (Godey et al.) </small>
 - Allows the language model to learn its *own* mapping
 <center><img width=800px src='../imgs/course2/manta.gif'/></center>
