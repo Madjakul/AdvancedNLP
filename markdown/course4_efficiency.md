@@ -12,6 +12,10 @@ marp: true
 
 ---
 <!--footer: 'Course 4: Efficient NLP' -->
+<!--_class: lead -->
+## Introduction
+
+---
 
 ### The cost of pre-training LMs
 <center><img width="900px" src="../imgs/course4/scaling_llama.svg"/></center>
@@ -23,8 +27,18 @@ marp: true
 
 ---
 
+
+### The cost of using LMs
+
+- Throughput decreases as you increase your model size.
+- LMs can become VRAM hungry without proper optimization.
+
+**What are the different ways of reducing compute for training/inference and an increasing throughput.**
+
+---
+
 <!--_class: lead -->
-# Efficient training
+# Scaling Laws
 
 ---
 ### Scaling Laws
@@ -76,6 +90,12 @@ $$
 <img width="500px" src="../imgs/course4/6B_infer_opt.png"/></center>
 
 ---
+
+<!--_class: lead -->
+# Efficient Training
+
+---
+
 ### Training LMs
 
 * Batch size matters:
@@ -92,21 +112,7 @@ $$
 <center><img width="1000px" src="../imgs/course4/bfloat.png"></center>
 
 ---
-### Training LMs - Efficient implementations
-- FlashAttention (Dao et al. 2022)
-<center><img width="1000px" src="../imgs/course4/flashattn_banner.jpeg"/></center>
 
----
-### Training LMs - Efficient implementations
-- FlashAttention (Dao et al. 2022)
-<center><img width="1000px" src="../imgs/course4/flashattn_banner.jpeg"/></center>
-
----
-### Training LMs - Efficient implementations
-- FlashAttention 2 & 3 (Dao et al. 2023)
-<center><img width="600px" src="../imgs/course4/flash2.png"/></center>
-
----
 ### Training LMs - Efficient implementations
 - xFormers & Memory-efficient attention (Rabe et al. 2021)
     - Classical implementation <br><center><img width="900px" src="../imgs/course4/regular_attn.png"/></center>
@@ -235,22 +241,36 @@ $$ Q_{i_4}(0.3)  \neq 0$$
 
 ---
 
-### LM quantization - GPTQ
 
-Consider quantization as an optimization problem:
+### Example
+
+Weights:
 $$
-\argmin_{\hat{W}} || WX - \hat{W}X ||_2^2
+x = [-2.3,\ -1.0,\ 0.5,\ 1.8]
 $$
-where $W$ is a weight matrix to quantize into $\hat{W}$, and $X$ are data points (e.g. token sequences)
+
+Scale:
+$$
+s = \frac{2.3}{7} \approx 0.329
+$$
+
+Quantize:
+$$
+q = \text{round}(x/s) = [-7,\ -3,\ 2,\ 6]
+$$
 
 ---
 
-### LM quantization - GPTQ
+### Dequantization
 
-* For each row, quantize some $W_{ij}$ by solving the quadratic problem and adjust the non-quantized coefficients of $W_i$ to minimize impact
-* *Empirical*: update order does not matter
-* Update at smaller scale and batch whole matrix updates
-* Precompute Hessian (needed for adaptation) on non-quantized coefficients since they can be taken left-to-right
+$$
+\hat{x} = s \cdot q
+= 0.329 \times [-7,\ -3,\ 2,\ 6]
+= [-2.30,\ -0.99,\ 0.66,\ 1.97]
+$$
+
+* Approximation error is small, values fall within 4-bit resolution.
+* Not a bit reinterpretation but a **scaled rounding process**.
 
 ---
 

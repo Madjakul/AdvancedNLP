@@ -200,7 +200,7 @@ How many steps between source of info and current position?
 
 ---
 ### Inside Transformers
-<center><img width="300px" src="../imgs/course3/transformers.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chloeli-15/ARENA_img/main/img/transformer-new2.png" height="550"></center>
 
 ---
 ### Inside Transformers : Embeddings
@@ -212,7 +212,7 @@ Before going in the network:
 
 ---
 ### Inside Transformers : Self-attention
-<center><img width="700px" src="../imgs/course3/transformers_self_attn_qkv.svg"/></center>
+<center><img src="https://raw.githubusercontent.com/info-arena/ARENA_img/main/misc/transformer-attn-simple.png" width="700"></center>
 
 ---
 ### Inside Transformers : Q and K
@@ -255,10 +255,6 @@ where $d_h$ is the hidden dimension of the model
       <li><b>Complexity: O(L^2)</b></li>
     </ul>
   </div>
-  <div style="flex: 0.3;">
-    <img width="350px" src="../imgs/course3/transformers_fullpic.svg"/>
-
-  </div>
 
 </div>
 
@@ -271,12 +267,12 @@ where $d_h$ is the hidden dimension of the model
 ### Inside Transformers : LayerNorm
 - Avoids gradient explosion
 
-<center><img width="700px" src="../imgs/course3/layer_norm.png"/></center>
+<center><img src="https://raw.githubusercontent.com/chloeli-15/ARENA_img/main/img/transformer-ln.png" width="750"></center>
 
 ---
 ### Inside Transformers : Output layer
 <br>
-<center><img width="400px" src="../imgs/course3/final_proj.svg"/></center>
+<center><img src="https://raw.githubusercontent.com/chloeli-15/ARENA_img/main/img/transformer-mlp-new-2.png" width="680"></center>
 
 ---
 ### Modern flavors : Relative Positional Embeddings
@@ -424,7 +420,7 @@ $$
 
 - What we want at inference: 
 $$
-W^* = \argmax_{n, w_i...w_n}P_{\theta}(w_i...w_n | w_1...w_{i-1})
+W^* = \arg\max_{n, w_i...w_n} P_{\theta}(w_i...w_n | w_1...w_{i-1})
 $$
 
 - For a given completion length $n$, there are $|V|^n$ possibilities
@@ -436,9 +432,9 @@ $$
 
 - Keep best word at each step and start again: 
 $$
-W^* = \argmax_{n, w_{i+1}...w_n}P_{\theta}(w_{i+1}...w_n | w_1...w_{i-1}w_i^*)
+W^* = \arg\underset{n, w_{i+1}...w_n} \max P_{\theta}(w_{i+1}...w_n | w_1...w_{i-1}w_i^*)
 $$
-where $w_i^* = \argmax_{w_i} P_{\theta}(w_i | w_1...w_{i-1})$
+where $w_i^* = \arg\underset{w_i}\max P_{\theta}(w_i | w_1...w_{i-1})$
 
 ---
 ### Decoders - Beam search
@@ -496,19 +492,11 @@ $$
 * Compare $P_\theta$ and $P_\phi$ and only keep tokens where they <mark> don't differ too much </mark>
 
 ---
-<!--_class: lead -->
-# Encoder-Decoder models
 
----
-### T5 pre-training
-
-<center><img width="750px" src="../imgs/course3/T5_lm.svg"/></center>
-
----
 ### All models can do everything
 
 * Encoders are mostly used to get contextual embeddings
-  * They can also generate : $T_{enc}$("I love [MASK]")
+  * They can also generate: $T_{enc}$("I love [MASK]")
 * Decoders are mostly used for language generation
   * They can also give contextual embeddings : $T_{dec}$("I love music!")
   * Or solve any task using prompts:
