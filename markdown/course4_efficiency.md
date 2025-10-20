@@ -57,7 +57,7 @@ marp: true
 ---
 
 <!--_class: lead -->
-# Scaling Laws
+## Scaling Laws
 
 ---
 
