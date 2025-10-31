@@ -33,7 +33,7 @@ Part 2: Advanced NLP Applications
 2. Tokenization ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course2_tokenization.pdf) / [lab session](https://colab.research.google.com/drive/1P26eLfcl3xVszeTtU5kOjnM4Cd-ZO5bf?usp=sharing))
 3. Language Modeling ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course3_lm.pdf) / [lab session](https://arena-chapter1-transformer-interp.streamlit.app/[1.1]_Transformer_from_Scratch))
 4. Efficient NLP ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course4_efficiency.pdf) / [lab session](https://arena-chapter1-transformer-interp.streamlit.app/[1.1]_Transformer_from_Scratch))
-5. Modern Interpretability ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course4_efficiency.pdf) / [lab session](https://arena-chapter1-transformer-interp.streamlit.app/[1.2]_Intro_to_Mech_Interp))
+5. Modern Interpretability ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course5_interpret.pdf) / [lab session](https://arena-chapter1-transformer-interp.streamlit.app/[1.2]_Intro_to_Mech_Interp))
 6. Human-Centered NLP ([slides]() / [lab session]())
 7. Advanced NLP tasks ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course7_advanced.pdf) / [lab session]())
 8. Domain-specific NLP ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course8_specific.pdf) / [lab session]())
