@@ -390,7 +390,7 @@ Empirically, adapting just the attention query and value projections often suffi
 
 ### Previous methods hold
 * Efficient attention implementations & variants
-    * FlashAttention / xFormers
+    * xFormers
     * Linear attention
 * Model parallelism (FSDP & DeepSpeed)
 * LORA weights for fast model "switching"
@@ -417,7 +417,7 @@ Modern LLMs use `float16` or `bfloat16` representations:
 For a weight $w \in [-w_{max}, w_{max}]$ and target quantization to $b$ bits:
 
 $$
-w_q = \text{round}\left(\frac{w}{s}\right) \in [-2^{b-1}, 2^{b-1} - 1]
+w_q = \text{round}\left(\frac{w}{s}\right) \in [-2^{b-1} - 1, 2^{b-1} - 1]
 $$
 
 Where $s$ is the scale factor. But how do we determine $s$?
