@@ -33,7 +33,7 @@ marp: true
 ---
 
 
-<style scoped>section{font-size:22px;}</style>
+<style scoped>section{font-size:24px;}</style>
 
 ## Content
 
@@ -49,7 +49,6 @@ marp: true
     a. Quantization
     b. KV-Cache
     c. Speculative decoding
-    d. Mixture of experts
 5. **Model Reduction**
    a. Distillation
    b. Mixture of experts
