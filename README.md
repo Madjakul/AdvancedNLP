@@ -20,7 +20,7 @@ Part 1: General NLP
 
 Part 2: Advanced NLP Applications
 
-* **Session 7 (21/11, Célia)**: Human-Centered NLP
+* **Session 7 (21/11, Célia)**: Safety, Ethics, and Alignment of LMs
 * **Session 8 (28/11, Rian)**: Advanced NLP Tasks
 * **Session 9 (5/12, Rian)**: Domain-specific NLP
 * **Session 10 (12/12, Rian)**: Multilingual NLP 
