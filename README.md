@@ -34,7 +34,7 @@ Part 2: Advanced NLP Applications
 3. Language Modeling ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course3_lm.pdf) / [lab session](https://arena-chapter1-transformer-interp.streamlit.app/[1.1]_Transformer_from_Scratch))
 4. Efficient NLP ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course4_efficiency.pdf) / [lab session](https://arena-chapter1-transformer-interp.streamlit.app/[1.1]_Transformer_from_Scratch))
 5. Modern Interpretability ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course5_interpret.pdf) / [lab session](https://arena-chapter1-transformer-interp.streamlit.app/[1.2]_Intro_to_Mech_Interp))
-6. Human-Centered NLP ([slides]() / [lab session]())
+6. Safety, Ethics, and Alignment of LMs ([slides]() / [lab session](https://colab.research.google.com/drive/1HQRQRRm_AJcwaEovHW4UU9k8h45wsfs5?usp=sharing))
 7. Advanced NLP tasks ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course7_advanced.pdf) / [lab session]())
 8. Domain-specific NLP ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course8_specific.pdf) / [lab session]())
 9. Multilingual NLP ([slides](https://github.com/Madjakul/AdvancedNLP/blob/main/slides/pdf/Course%209%20-%20Multilingual%20NLP.pdf) / [lab session]())
