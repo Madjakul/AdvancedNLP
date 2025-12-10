@@ -38,7 +38,7 @@ Part 2: Advanced NLP Applications
 7. Advanced NLP tasks ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course7_advanced.pdf) / [lab session](https://colab.research.google.com/drive/1Xs0c4YJYEiBuEm_M7oD8U4CQJcOoD0xK?usp=sharing))
 8. Domain-specific NLP ([slides](https://github.com/Madjakul/AdvancedNLP/raw/main/slides/pdf/course8_specific.pdf) / [lab session](https://colab.research.google.com/drive/1ZmW0J9GIztl4J2F884LU4YvFp0i7B_Ok?usp=sharing))
 9. Multilingual NLP ([slides](https://github.com/Madjakul/AdvancedNLP/blob/main/slides/pdf/Course%209%20-%20Multilingual%20NLP.pdf) / [lab session]())
-10. Multimodal NLP ([slides]([https://github.com/Madjakul/AdvancedNLP/blob/main/slides/pdf/cours10_Multimodal_NLP.pdf](https://drive.google.com/file/d/1yTteSqjF241dDvkJoTcNb76vY8YcdgEF/view?usp=sharing) / [lab session]())
+10. Multimodal NLP ([slides](https://drive.google.com/file/d/1yTteSqjF241dDvkJoTcNb76vY8YcdgEF/view?usp=sharing) / [lab session]())
 
 ## Evaluation
 
